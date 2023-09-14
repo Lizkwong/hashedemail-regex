@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Email Collection</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+      label {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+      input[type="email"] {
+        width: 300px;
+        height: 35px;
+        padding-left: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        margin-bottom: 20px;
+      }
+      input[type="submit"] {
+        width: 150px;
+        height: 40px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #333;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Email Collection</h1>
+    <form onsubmit="collectEmail(); return false;">
+      <label for="email">Please input your email:</label>
+      <input type="email" id="email" required>
+      <input type="submit" value="Submit">
+    </form>
+    <script>
+      function collectEmail() {
+        let input = document.getElementById("email").value;
+        let pattern = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+        let result = pattern.test(input);
+        if (result) {
+          result = input.replace(pattern, `*****@****`);
+          alert(`Here's your email: ${result}`);
+        } else {
+          alert(`${input} is not a valid email address!`);
+        }
+      }
+    </script>
+  </body>
+</html>
